@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include head.ejs %>
+  </head>
+  <body>
+
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-12">
+              <h1><%= title %></h1>
+              <p>Welcome to <%= title %></p>
+
+              <div class="row">
+                  <div class="col-sm-3">
+                      <img src="/images/alessandro.jpg" alt="alessandro" style="width:150px;height:180px;">
+                      <p>Benefactor</p>
+                  </div>
+
+                  <div class="col-sm-3">
+                      <img src="/images/dharmadi.jpg" alt="dharmadi" style="width:150px;height:180px;">
+                      <p>CTO</p>
+                  </div>
+
+                  <div class="col-sm-3">
+                      <img src="/images/alex.jpg" alt="alex" style="width:150px;height:180px;">
+                      <p>CTO</p>
+                  </div>
+
+                  <div class="col-sm-3">
+                      <img src="/images/toni2.jpg" alt="toni" style="width:150px;height:180px;">
+                      <p>CTO</p>
+                  </div>
+              </div>
+
+              <br>
+              <br>
+              <br>
+
+              <div class="text-center">
+                  <a href="/login" class="btn btn-success">Login</a>
+              </div>
+
+          </div>
+      </div>
+  </div>
+
+
+  <% include script.ejs %>
+  </body>
+</html>
