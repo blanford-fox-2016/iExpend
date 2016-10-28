@@ -24,4 +24,6 @@ router.post('/transaction', UserController.insertTransaction)
 
 router.get('/report', UserController.viewReport)
 
+router.get('/report/delete/:id', UserController.deleteTransaction)
+
 module.exports = router;

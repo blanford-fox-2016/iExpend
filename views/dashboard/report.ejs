@@ -52,6 +52,7 @@
                             <td>Cost</td>
                             <td>Type</td>
                             <td>Description</td>
+                            <td>Action</td>
                         </tr>
 
                         <% for (var i = 0; i < data[0].transaction.length; i++) {%>
@@ -61,6 +62,7 @@
                             <td><%= data[0].transaction[i].cost %></td>
                             <td><%= data[0].transaction[i].category %></td>
                             <td><%= data[0].transaction[i].description %></td>
+                            <td><a href="/dashboard/report/delete/<%= data[0].transaction[i]._id%>" class="btn btn-danger">Delete</a></td>
                         </tr>
 
                         <% } %>

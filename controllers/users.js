@@ -114,6 +114,18 @@ function editProfile(req, res) {
 
 }
 
+function deleteTransaction(req, res) {
+    console.log(req.params.id)
+    User.findOneAndUpdate({
+        username: req.user.username
+    }, {
+        $pull: { "transaction": { _id: req.params.id } }
+    }, function (err) {
+        if (err) console.log(err)
+        res.redirect('/dashboard/report')
+    })
+}
+
 module.exports = {
     viewProfile: viewProfile,
     localRegister: localRegister,
@@ -125,7 +137,8 @@ module.exports = {
     insertTransaction: insertTransaction,
     viewReport: viewReport,
     viewEditProfile:viewEditProfile,
-    editProfile:editProfile
+    editProfile:editProfile,
+    deleteTransaction: deleteTransaction
 }
 
 
