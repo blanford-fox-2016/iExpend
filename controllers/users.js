@@ -91,17 +91,17 @@ function viewReport(req, res) {
     User.FindAll({}, function (data) {
         res.render('dashboard/report')
     })
+}
 
-    function viewEditProfile(req, res) {
-        res.render('dashboard/editProfile', {profile: req.user})
-    }
+function viewEditProfile(req, res) {
+    res.render('dashboard/editProfile', {profile: req.user})
+}
 
-    function editProfile(req, res) {
-        res.send(req.body)
-
-    }
+function editProfile(req, res) {
+    res.send(req.body)
 
 }
+
 module.exports = {
     viewProfile: viewProfile,
     localRegister: localRegister,
