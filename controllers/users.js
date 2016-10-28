@@ -54,6 +54,38 @@ function localLogin (req, res) {
     res.redirect('dashboard/profile')
 }
 
+function viewFormTransaction (req, res) {
+    res.render('dashboard/transaction', {username:req.user.username})
+}
+
+function insertTransaction(req, res) {
+
+    User.findOneAndUpdate({
+        username: req.user.username
+    }, {
+        $push: {
+            transaction: {
+                date: new Date(req.body.date).toISOString(),
+                cost: Number(req.body.cost),
+                category: req.body.type,
+                description: req.body.description,
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            }
+        }
+    }, {
+        new: true,
+        safe: true,
+        upsert: true
+    },
+    function(err, data) {
+        if (err) console.log(err)
+        console.log(data)
+        res.redirect('/dashboard')
+    })
+
+}
+
 
 module.exports = {
     viewProfile: viewProfile,
@@ -61,5 +93,7 @@ module.exports = {
     isAuthenticate: isAuthenticate,
     isLogin: isLogin,
     logout: logout,
-    localLogin: localLogin
+    localLogin: localLogin,
+    viewFormTransaction: viewFormTransaction,
+    insertTransaction: insertTransaction
 }

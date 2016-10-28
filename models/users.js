@@ -6,7 +6,17 @@ var userSchema = new mongoose.Schema({
     name: String,
     password: String,
     username: String,
-    email: String
+    email: String,
+    transaction: [
+        {
+            date: Date,
+            cost: Number,
+            category: String,
+            description: String,
+            createdAt: Date,
+            updatedAt: Date
+        }
+    ]
 })
 
 userSchema.plugin(passportLocalMongoose)

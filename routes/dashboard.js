@@ -13,8 +13,8 @@ router.get('/', function(req, res) {
 router.get('/profile', UserController.isAuthenticate, UserController.viewProfile)
 
 
-router.get('/transaction', function (req, res) {
-    res.render('dashboard/transaction')
-})
+router.get('/transaction', UserController.isAuthenticate, UserController.viewFormTransaction)
+
+router.post('/transaction', UserController.insertTransaction)
 
 module.exports = router;
