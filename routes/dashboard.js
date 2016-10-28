@@ -12,6 +12,11 @@ router.get('/', function(req, res) {
 
 router.get('/profile', UserController.isAuthenticate, UserController.viewProfile)
 
+router.get('/profile/edit', UserController.isAuthenticate, UserController.viewEditProfile)
+router.post('/profile/edit', UserController.isAuthenticate, UserController.editProfile)
+
+
+
 
 router.get('/transaction', function (req, res) {
     res.render('dashboard/transaction')

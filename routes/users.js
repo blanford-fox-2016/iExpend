@@ -6,6 +6,8 @@ var passport = require('passport')
 /* GET users listing. */
 router.get('/', userController.viewProfile)
 
+
+
 // router.post('/login', passport.authenticate('local'), userController.localLogin)
 
 module.exports = router;

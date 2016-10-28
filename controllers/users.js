@@ -54,6 +54,14 @@ function localLogin (req, res) {
     res.redirect('dashboard/profile')
 }
 
+function viewEditProfile(req, res){
+  res.render('dashboard/editProfile', {profile:req.user})
+}
+
+function editProfile(req, res){
+  res.send(req.body)
+}
+
 
 module.exports = {
     viewProfile: viewProfile,
@@ -61,5 +69,7 @@ module.exports = {
     isAuthenticate: isAuthenticate,
     isLogin: isLogin,
     logout: logout,
-    localLogin: localLogin
+    localLogin: localLogin,
+    viewEditProfile:viewEditProfile,
+    editProfile:editProfile
 }
