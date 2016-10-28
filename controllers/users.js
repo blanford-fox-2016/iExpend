@@ -89,7 +89,9 @@ function insertTransaction(req, res) {
 
 function viewReport(req, res) {
 
-    User.find({}, function (err, data) {
+    User.find({
+        _id: req.user._id
+    }, function (err, data) {
         res.render('dashboard/report', {profile:req.user, data:data})
     })
 }
@@ -129,7 +131,9 @@ function deleteTransaction(req, res) {
 
 function viewDashboard(req, res) {
 
-    User.find({}, function (err, data) {
+    User.find({
+        _id: req.user._id
+    }, function (err, data) {
         res.render('dashboard/index', {profile:req.user, data:data})
     })
 }
@@ -139,8 +143,18 @@ function viewEditProfile(req, res) {
 }
 
 function editProfile(req, res) {
-    res.send(req.body)
-    // res.render('dashboard/index', { profile:req.user });
+    User.findOneAndUpdate({
+        _id: req.body.id
+    }, {
+        $set: {name: req.body.name, email: req.body.email}
+    }, {
+        new: true
+    }, function (err) {
+        if (err) {
+            console.log(err)
+        }
+        res.redirect('/dashboard/profile')
+    })
 }
 
 module.exports = {
