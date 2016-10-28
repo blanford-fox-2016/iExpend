@@ -88,8 +88,8 @@ function insertTransaction(req, res) {
 
 function viewReport(req, res) {
 
-    User.FindAll({}, function (data) {
-        res.render('dashboard/report')
+    User.find({}, function (err, data) {
+        res.render('dashboard/report', {data:data})
     })
 }
 
@@ -98,7 +98,19 @@ function viewEditProfile(req, res) {
 }
 
 function editProfile(req, res) {
-    res.send(req.body)
+    User.findOneAndUpdate({
+        _id: req.body.id
+    }, {
+        $set: {name: req.body.name, email: req.body.email}
+    }, {
+        new: true
+    }, function (err) {
+        if (err) {
+            console.log(err)
+        }
+        res.redirect('/dashboard/profile')
+    })
+    // res.send(req.body)
 
 }
 

@@ -53,6 +53,17 @@
                             <td>Type</td>
                             <td>Description</td>
                         </tr>
+
+                        <% for (var i = 0; i < data[0].transaction.length; i++) {%>
+                        <tr>
+                            <td><%= i + 1%></td>
+                            <td><%= data[0].transaction[i].date %></td>
+                            <td><%= data[0].transaction[i].cost %></td>
+                            <td><%= data[0].transaction[i].category %></td>
+                            <td><%= data[0].transaction[i].description %></td>
+                        </tr>
+
+                        <% } %>
                     </table>
                 </div>
 
