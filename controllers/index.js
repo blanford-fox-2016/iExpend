@@ -1,6 +1,6 @@
 var passport = require('passport')
+var Transaction = require('../models/transactions')
 var User = require('../models/users')
-
 
 function localRegister (req, res, next) {
     User.register(new User({
@@ -27,15 +27,11 @@ function localRegister (req, res, next) {
 }
 
 
-function viewProfile (req, res) {
-    res.render('dashboard/profile', {profile:req.user})
-}
-
 function isAuthenticate (req, res, next) {
     if (req.isAuthenticated())
         return next();
 
-    res.redirect('/login');
+    res.redirect('/');
 }
 
 function isLogin (req, res, next) {
@@ -50,16 +46,11 @@ function logout (req, res) {
     res.redirect('/')
 }
 
-function localLogin (req, res) {
-    res.redirect('dashboard/profile')
-}
-
 
 module.exports = {
     viewProfile: viewProfile,
     localRegister: localRegister,
     isAuthenticate: isAuthenticate,
     isLogin: isLogin,
-    logout: logout,
-    localLogin: localLogin
+    logout: logout
 }

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var controllerUsers = require('../controllers/users')
+var UserController = require('../controllers/users')
 var controllerTransactions = require('../controllers/transactions')
 var passport = require('passport')
 
@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
 });
 
 
-router.get('/profile')
+router.get('/profile', UserController.isAuthenticate, UserController.viewProfile)
 
 
 router.get('/transaction', function (req, res) {

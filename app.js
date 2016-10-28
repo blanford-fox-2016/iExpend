@@ -3,7 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var session = require('cookie-parser')
+var session = require('express-session')
 var bodyParser = require('body-parser');
 
 //Model
@@ -13,7 +13,7 @@ var Transaction = require('./models/transactions')
 //mongoose
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/dharmadi')
+mongoose.connect('mongodb://localhost/money_transaction')
 
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -57,6 +57,10 @@ app.use('/', routes);
 app.use('/dashboard/users', users);
 app.use('/dashboard', dashboard);
 app.use('/auth', auth);
+
+
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
