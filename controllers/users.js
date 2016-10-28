@@ -86,6 +86,14 @@ function insertTransaction(req, res) {
 
 }
 
+function viewReport(req, res) {
+
+    User.FindAll({}, function (data) {
+        res.render('dashboard/report')
+    })
+
+}
+
 
 module.exports = {
     viewProfile: viewProfile,
@@ -95,5 +103,6 @@ module.exports = {
     logout: logout,
     localLogin: localLogin,
     viewFormTransaction: viewFormTransaction,
-    insertTransaction: insertTransaction
+    insertTransaction: insertTransaction,
+    viewReport: viewReport
 }

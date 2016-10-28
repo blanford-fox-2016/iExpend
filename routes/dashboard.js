@@ -17,4 +17,6 @@ router.get('/transaction', UserController.isAuthenticate, UserController.viewFor
 
 router.post('/transaction', UserController.insertTransaction)
 
+router.get('/report', UserController.viewReport)
+
 module.exports = router;
