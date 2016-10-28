@@ -28,47 +28,47 @@ a {
 
 }
 
-.form {
-  position: relative;
-  z-index: 1;
+.login-page .form {
+  position: relative !important;
+  z-index: 1 !important;
   background: #FFFFFF;
-  max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  max-width: 360px !important;
+  margin: 0 auto 100px !important;
+  padding: 45px !important;
+  text-align: center !important;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24) !important;
 }
 
-.form input, .form textarea, .form select {
+.login-page .form input, .login-page .form textarea, .login-page .form select {
   background: #f2f2f2;
-  width: 100%;
+  width: 100% !important;
   border: 0;
   border-radius: 0 !important;
-  margin: 0 0 15px;
+  margin: 0 0 15px !important;
   font-size: 14px !important;
-  -webkit-box-shadow: inset 0 0 0 white;
-  -moz-box-shadow: inset 0 0 0 white;
-  box-shadow: inset 0 0 0 white;
+  -webkit-box-shadow: inset 0 0 0 white !important;
+  -moz-box-shadow: inset 0 0 0 white !important;
+  box-shadow: inset 0 0 0 white !important;
 }
 
-.form button {
-  width: 100%;
-  padding: 15px;
-  border-radius: 0;
+.login-page .form button {
+  width: 100% !important;
+  padding: 15px !important;
+  border-radius: 0 !important;
 }
 
-.form .message {
-  margin: 15px 0 0;
+.login-page .form .message {
+  margin: 15px 0 0 !important;
   color: #b3b3b3;
   font-size: 12px;
 }
 
-.form .message a {
+.login-page .form .message a {
   color: #4CAF50;
   text-decoration: none;
 }
 
-.form .register-form {
+.login-page .form .register-form {
   display: none;
 }
 

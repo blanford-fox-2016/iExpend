@@ -3,11 +3,28 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('cookie-parser')
 var bodyParser = require('body-parser');
+
+//Model
+var User = require('./models/users')
+var Transaction = require('./models/transactions')
+
+//mongoose
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise
+mongoose.connect('mongodb://localhost/dharmadi')
+
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var dashboard = require('./routes/dashboard');
+var auth = require('./routes/auth');
+
+var config = require('./config/config')
 
 var app = express();
 
@@ -21,11 +38,25 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret: 'abcdefgh',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 6000000
+  }
+}))
 app.use(express.static(path.join(__dirname, 'public')));
 
+passport.use(new LocalStrategy(User.authenticate()))
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', routes);
-app.use('/users', users);
+app.use('/dashboard/users', users);
 app.use('/dashboard', dashboard);
+app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
