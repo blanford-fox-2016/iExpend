@@ -55,7 +55,7 @@ function localLogin (req, res) {
 }
 
 function viewFormTransaction (req, res) {
-    res.render('dashboard/transaction', {username:req.user.username})
+    res.render('dashboard/transaction', {profile:req.user, username:req.user.username})
 }
 
 function insertTransaction(req, res) {
@@ -89,7 +89,7 @@ function insertTransaction(req, res) {
 function viewReport(req, res) {
 
     User.find({}, function (err, data) {
-        res.render('dashboard/report', {data:data})
+        res.render('dashboard/report', {profile:req.user, data:data})
     })
 }
 
@@ -126,6 +126,15 @@ function deleteTransaction(req, res) {
     })
 }
 
+function viewDashboard(req, res) {
+
+    User.find({}, function (err, data) {
+        res.render('dashboard/index', {profile:req.user, data:data})
+    })
+
+    // res.render('dashboard/index', { profile:req.user });
+}
+
 module.exports = {
     viewProfile: viewProfile,
     localRegister: localRegister,
@@ -138,7 +147,8 @@ module.exports = {
     viewReport: viewReport,
     viewEditProfile:viewEditProfile,
     editProfile:editProfile,
-    deleteTransaction: deleteTransaction
+    deleteTransaction: deleteTransaction,
+    viewDashboard: viewDashboard
 }
 
 
