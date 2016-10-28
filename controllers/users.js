@@ -92,9 +92,16 @@ function viewReport(req, res) {
         res.render('dashboard/report')
     })
 
+    function viewEditProfile(req, res) {
+        res.render('dashboard/editProfile', {profile: req.user})
+    }
+
+    function editProfile(req, res) {
+        res.send(req.body)
+
+    }
+
 }
-
-
 module.exports = {
     viewProfile: viewProfile,
     localRegister: localRegister,
@@ -104,5 +111,9 @@ module.exports = {
     localLogin: localLogin,
     viewFormTransaction: viewFormTransaction,
     insertTransaction: insertTransaction,
-    viewReport: viewReport
+    viewReport: viewReport,
+    viewEditProfile:viewEditProfile,
+    editProfile:editProfile
 }
+
+
